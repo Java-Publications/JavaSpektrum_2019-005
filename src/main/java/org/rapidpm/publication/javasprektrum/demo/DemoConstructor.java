@@ -3,7 +3,7 @@ package org.rapidpm.publication.javasprektrum.demo;
 public class DemoConstructor {
 
   public static class MainView {
-    private String inputValue;
+    private String  inputValue;
 
     public String getInputValue() {
       return inputValue;

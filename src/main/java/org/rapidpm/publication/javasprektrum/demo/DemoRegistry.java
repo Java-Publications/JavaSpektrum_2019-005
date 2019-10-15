@@ -26,9 +26,9 @@ public class DemoRegistry {
 
   public static class MainView {
     //for demo public
-    public SubView subView = new SubView();
-    private String inputValue;
-    private Registration registration = subView.register(event -> inputValue = event.getValue());
+    public  SubView      subView      = new SubView();
+    private Registration registration = subView.register("keyXYZ", e -> inputValue = e.getValue());
+    private String       inputValue;
 
     public String getInputValue() {
       return inputValue;
@@ -40,14 +40,13 @@ public class DemoRegistry {
   }
 
   public static class SubView {
-    private final String registrationKey = "ABC";
 
     public void buttonClicked(String input) {
       EVENT_BUS.sentEvent(new Event(input));
     }
 
-    public Registration register(Consumer<Event> listener) {
-      return EVENT_BUS.register(registrationKey, listener);
+    public Registration register(String key, Consumer<Event> listener) {
+      return EVENT_BUS.register(key, listener);
     }
   }
 }
